@@ -10,11 +10,32 @@ import SwiftUI
 struct ContentView: View {
     // MARK: - Properties
 
+    let keyWindow = UIApplication
+        .shared
+        .connectedScenes
+        .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+        .first { $0.isKeyWindow }
+    
     // MARK: - Body
     
     var body: some View {
-        FooterView()
-            .padding(.horizontal)
+        ZStack {
+            VStack {
+                NavigationBarView()
+                    .padding(.horizontal, 15)
+                    .padding(.bottom)
+                    .padding(.top, keyWindow?.safeAreaInsets.top)
+                    .background(.white)
+                    .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 5)
+                
+                Spacer()
+                
+                FooterView()
+                    .padding(.horizontal)
+            } //: VStack
+            .background(colorBackground.ignoresSafeArea(.all, edges: .all))
+        } //: ZStack
+        .ignoresSafeArea(.all, edges: .top)
     }
 }
 
