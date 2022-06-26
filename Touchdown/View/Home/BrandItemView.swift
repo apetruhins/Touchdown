@@ -32,7 +32,7 @@ struct BrandItemView: View {
 
 struct BrandItemView_Previews: PreviewProvider {
     static var previews: some View {
-        BrandItemView(brand: brands[1])
+        BrandItemView(brand: sampleBrand)
             .previewLayout(.sizeThatFits)
             .padding()
             .background(colorBackground)

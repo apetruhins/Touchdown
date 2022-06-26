@@ -49,7 +49,7 @@ struct CategoryItemView: View {
 
 struct CategoryItemView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryItemView(category: categories[0])
+        CategoryItemView(category: sampleCategory)
             .previewLayout(.sizeThatFits)
             .padding()
             .background(colorBackground)

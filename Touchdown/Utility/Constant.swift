@@ -7,12 +7,22 @@
 
 import SwiftUI
 
+// Screen
+
+let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+let window = scene?.keyWindow
+
 // Data
 
 let players: [Player] = Bundle.main.decode("player.json")
 let categories: [Category] = Bundle.main.decode("category.json")
 let products: [Product] = Bundle.main.decode("product.json")
 let brands: [Brand] = Bundle.main.decode("brand.json")
+
+let samplePlayer = players[0]
+let sampleCategory = categories[0]
+let sampleProduct = products[0]
+let sampleBrand = brands[0]
 
 // Color
 
