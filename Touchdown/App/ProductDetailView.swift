@@ -11,6 +11,8 @@ struct ProductDetailView: View {
     
     // MARK: - Properties
     
+    @EnvironmentObject var shop: Shop
+    
     // MARK: - Body
     
     var body: some View {
@@ -40,7 +42,7 @@ struct ProductDetailView: View {
                 
                 //Description
                 ScrollView(.vertical, showsIndicators: false) {
-                    Text(sampleProduct.description)
+                    Text(shop.selectedProduct.description)
                         .font(.system(.body, design: .rounded))
                         .foregroundColor(.gray)
                         .multilineTextAlignment(.leading)
@@ -65,7 +67,7 @@ struct ProductDetailView: View {
         .zIndex(0)
         .ignoresSafeArea(.all, edges: .all)
         .background(
-            sampleProduct.colorRGB.ignoresSafeArea(.all, edges: .all)
+            shop.selectedProduct.colorRGB.ignoresSafeArea(.all, edges: .all)
         )
     }
 }
@@ -75,6 +77,7 @@ struct ProductDetailView: View {
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailView()
+            .environmentObject(Shop())
             .previewLayout(.fixed(width: 375, height: 812))
     }
 }

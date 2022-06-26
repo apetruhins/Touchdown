@@ -18,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            if shop.showingProduct == false && shop.selectedProduct == nil {
+            if shop.showingProduct == false {
                 VStack(spacing: 0) {
                     NavigationBarView()
                         .padding(.horizontal, 15)
@@ -41,6 +41,9 @@ struct ContentView: View {
                                 ForEach(products) { product in
                                     ProductItemView(product: product)
                                         .onTapGesture {
+                                            
+                                            feedback.impactOccurred()
+                                            
                                             withAnimation(.easeOut) {
                                                 shop.selectedProduct = product
                                                 shop.showingProduct = true

@@ -11,11 +11,13 @@ struct AddToCartDetailView: View {
     
     // MARK: - Properties
     
+    @EnvironmentObject var shop: Shop
+    
     // MARK: - Body
     
     var body: some View {
         Button {
-            
+            feedback.impactOccurred()
         } label: {
             Spacer()
             
@@ -27,7 +29,7 @@ struct AddToCartDetailView: View {
             Spacer()
         }
         .padding(15)
-        .background(sampleProduct.colorRGB)
+        .background(shop.selectedProduct.colorRGB)
         .clipShape(Capsule())
     }
 }
@@ -37,6 +39,7 @@ struct AddToCartDetailView: View {
 struct AddToCartDetailView_Previews: PreviewProvider {
     static var previews: some View {
         AddToCartDetailView()
+            .environmentObject(Shop())
             .previewLayout(.sizeThatFits)
             .padding()
     }
